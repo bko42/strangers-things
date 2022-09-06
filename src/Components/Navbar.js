@@ -9,6 +9,7 @@ const Navbar = ({ setToken }) => {
                 <Link to='/posts'>Posts</Link>
                 <Link to='/profile'>Profile</Link>
                 <Link to='/register'>Register</Link>
+                <Link to='/login'>Login</Link>
                 <Link to='/' 
                     onClick={() => {window.localStorage.removeItem('token');
                     setToken('')

@@ -11,6 +11,7 @@ import {
     Posts,
     Profile,
     Register,
+    Login,
 } from './Components';
 import {
     getPosts
@@ -46,11 +47,18 @@ const App = () => {
                 <Route path='/profile' element={<Profile />} />
                 <Route 
                     path='/register' 
-                    element={<Register 
-                    setToken={ setToken }
-                    navigate={navigate}/>} 
+                        element={<Register 
+                        setToken={ setToken }
+                        token={token}
+                        navigate={navigate}/>} 
                     />
-                
+                <Route
+                path='login'
+                element={<Login
+                    setToken={ setToken }
+                    navigate={ navigate }
+                    />}
+                />
             </Routes>
             
         </div>
