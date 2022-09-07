@@ -1,12 +1,17 @@
 const baseURL = 'https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-PT'
 
-export const getPosts = async() => {
+export const getPosts = async(token) => {
     try {
-        const response = await fetch(`${baseURL}/posts`)
+        const response = await fetch(`${baseURL}/posts` {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
         const results = await response.json();
     
         return(results)
-    } catch(ex) {
+    } catch(error) {
         console.log('error getting all posts')
     }
 }
