@@ -11,9 +11,8 @@ const Navbar = ({ setToken }) => {
                 <Link to='/register'>Register</Link>
                 <Link to='/login'>Login</Link>
                 <Link to='/' 
-                    onClick={() => {window.localStorage.removeItem('token');
-                    setToken('')
-                }}>Logout</Link>
+                    onClick={() => logout() }>Logout</Link>
+                  
             </nav>
         </header>
     )

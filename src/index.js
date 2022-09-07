@@ -14,30 +14,57 @@ import {
     Login,
 } from './Components';
 import {
-    getPosts
+    getPosts,
+    getUserDetails
 } from './api';
 
 
 const App = () => {
     const [posts, setPosts] = useState([]);
     const [token, setToken] = useState('');
-    const navigate = useNavigate();
+    const [user, setUser] = useState({});
 
-    console.log(token)
+    const navigate = useNavigate();
+    
+
+    function logout() {window.localStorage.removeItem('token');
+    setToken('');
+    setUser({});
+    }
 
     async function fetchPosts() { 
-    const results = await getPosts()
+    const results = await getPosts(token)
     console.log(results)
-    setPosts(results.data.posts)
+    setPosts(results.data.posts);
+    }
+
+
+    async function getMe() {
+        const storedToken = window.localStorage.getItem('token');
+        if (!token){
+            setToken(storedToken)
+            return;
+        }
+        
+        const results = await getUserDetails(token)
+        if (results.success) {
+            setUser(results.data);
+        } else {
+            console.log(results.error.message);
+        }    
     }
 
     useEffect(() => {
         fetchPosts()
-    }, [])
+    }, [token])
+    
+    useEffect(() => {
+        getMe();   
+    }, [token])
 
     return (
         <div>
-            <Navbar />
+            <Navbar logout={ logout }/>
             <Routes>
                 {
                     // new Route setup
