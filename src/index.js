@@ -12,6 +12,8 @@ import {
     Profile,
     Register,
     Login,
+    CreatePost,
+    SinglePostView,
 } from './Components';
 import {
     getPosts,
@@ -64,14 +66,22 @@ const App = () => {
 
     return (
         <div>
-            <Navbar logout={ logout }/>
+            <Navbar logout={ logout } token={token} />
             <Routes>
                 {
                     // new Route setup
                 }
                 <Route path='/' element={<Home />} />
                 <Route path='/posts' element={<Posts posts={posts}/>} />
+                <Route 
+                    path='/posts/:postID'
+                    element={<SinglePostView posts={posts}/>}
+                />
                 <Route path='/profile' element={<Profile />} />
+                <Route
+                    path='/create-post'
+                    element={<CreatePost token={ token } /> }
+                />
                 <Route 
                     path='/register' 
                         element={<Register 
