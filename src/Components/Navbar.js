@@ -12,7 +12,10 @@ const Navbar = ({ logout, token }) => {
 {/* Shows register and login if no token, shows logout with token. */}
                 {
                     token ? (
+                        <>
+                        <Link to='/create-post'>Create Post</Link>
                         <Link to='/' onClick={() => logout() }>Logout</Link>
+                        </>
                     ) : (
                         <>
                         <Link to='/register'>Register</Link>

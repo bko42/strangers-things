@@ -1,11 +1,14 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { deletePost } from '../api';
 
-const Posts = ({ posts }) => {
+
+const Posts = ({ posts, token }) => {
     //const { posts } = props
 
     return (
         <div>
+
         {
             posts.map((post) => {
             const {description, location, price, willDeliver, title, _id, isAuthor} = post;
@@ -15,19 +18,27 @@ const Posts = ({ posts }) => {
                     <p>Description: {description}</p>
                     <p>Price: {price}</p>
                     <p>Location: {location}</p>
-                    <p>Will Deliver: {willDeliver}</p>
-                    {
+                    {willDeliver ? <p>Will Deliver</p> : <p>Pickup Only</p>}
+                    {/* {
                         price === 'free' ? (
                             <button>This is Free</button>
                         ) : (
                             <button>View</button>
                         )
+                    } */}
+                    {
+                        <Link to ={`/posts/${_id}`}>View</Link>
                     }
                     {
                         isAuthor ? (
-                            <button>You are the author</button>
+                            <>
+                            <Link to={`/posts/edit-post/${_id}`}>Edit</Link>
+                            <button onClick={(event) => {
+                                event.preventDefault(); 
+                                deletePost(token, {_id})}}>Delete Post</button>
+                            </>
                         ) : (
-                            <Link to ={`/posts/${_id}`}>View</Link>
+                            null
                         )
                     }
                 </div>
