@@ -7,13 +7,14 @@ const Navbar = ({ logout, token }) => {
             <nav>
                 <Link to='/'>Home</Link>
                 <Link to='/posts'>Posts</Link>
-                <Link to='/profile'>Profile</Link>
+                
 
 {/* Shows register and login if no token, shows logout with token. */}
                 {
                     token ? (
                         <>
                         <Link to='/create-post'>Create Post</Link>
+                        <Link to='/profile'>Profile</Link>
                         <Link to='/' onClick={() => logout() }>Logout</Link>
                         </>
                     ) : (

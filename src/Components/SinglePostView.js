@@ -27,11 +27,11 @@ const SendMessage = ({postID, token}) => {
     )
 }
 
-const SinglePostView = ({ posts, token }) => {
+const SinglePostView = ({ posts, token, navigate, getMe }) => {
     const [activateMessage, setActivateMessage] = useState(false);
     const { postID } = useParams();
     
-
+if (posts.length){
     const [currentPost] = posts.filter(post => post._id === postID);
     const {title, description, location, price, willDeliver} = currentPost;
 
@@ -51,6 +51,11 @@ const SinglePostView = ({ posts, token }) => {
             
         </div>
     )
+}else {
+    return (
+                <h1>Waiting for posts...</h1> 
+            )
+        }
 }
 
 export default SinglePostView;
