@@ -19,9 +19,8 @@ const [willDeliver, setWillDeliver] = useState(false)
             willDeliver,
         }
         const result = await createPost(token, newPost)
-        console.log(title, willDeliver)
+        
         const results = await getPosts(token)
-    console.log(results)
     setPosts(results.data.posts);
     navigate (`/posts`)
     //navigate (`/posts/${results.data.post._id}`)

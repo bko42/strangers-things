@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { updatePost } from '../api'
+import { getPosts, updatePost, } from '../api'
 
-const EditPost = ({ posts, token }) => {
+const EditPost = ({ posts, token, setPosts, navigate }) => {
     
     const { postID } = useParams();
     console.log(posts)
@@ -21,7 +21,7 @@ const EditPost = ({ posts, token }) => {
             title: newTitle,
             description: newDescription,
             price: newPrice,
-            locations: newLocation,
+            location: newLocation,
             willDeliever: newWillDeliver,
             _id: postID
         }
@@ -59,7 +59,14 @@ const EditPost = ({ posts, token }) => {
                 checked = {newWillDeliver}
                 onChange={(event) => setNewWillDeliver(!newWillDeliver)}
                 />    
-                <button onClick={() => editPost()}>Edit Post</button> 
+                {/* Will not work properly, setPosts not a function */}
+                <button onClick={async(event) => { 
+                        event.preventDefault();
+                        editPost()
+                        const results = await getPosts(token)
+                        setPosts(results.data.posts);
+                        navigate (`/posts/${_id}`)
+                        }}>Edit Post</button> 
             
         </div>
 

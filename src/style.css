@@ -1,0 +1,29 @@
+.posts {
+ 
+ display:flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    font-family:'Open Sans' ;
+    align-items:flex-start;
+    /* flex-grow:1; */
+    margin-bottom: 12px;
+    margin-right: 12px;
+    box-shadow: 0 2px 5px -2px black;
+}
+
+.navbar {
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    /* background-color: rgb(34, 74, 147); */
+    font-family: 'Open Sans Condensed';
+    /* display:flex; */
+    padding: 1rem;
+    
+    flex-direction: column;
+    
+    flex-basis: 256px;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+}

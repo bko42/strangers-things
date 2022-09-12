@@ -77,6 +77,7 @@ const App = () => {
                     element={<Posts 
                     token={token} 
                     posts={posts} 
+                    setPosts={setPosts}
                     navigate={navigate}
                     />} 
                 />
@@ -95,6 +96,9 @@ const App = () => {
                 <Route path='/profile' 
                 element={<Profile
                 user={user}
+                posts={posts}
+                setPosts={setPosts}
+                token={token}
                 />} />
                 <Route
                     path='/create-post'
