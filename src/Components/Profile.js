@@ -59,12 +59,12 @@ const Profile = ({ user, posts, setPosts, token }) => {
             </div>
             <h1>My Posts</h1>
             <div className='posts'>
-                {posts.map((post, idx) => {
+                {posts.map((post, index) => {
                     const { description, location, price, willDeliver, title, _id, isAuthor } = post;
                     if (isAuthor) {
                         return (
-                            <>
-                                <div className='post' key={idx}>
+                            
+                                <div className='post' key={index}>
                                     <h3>{title}</h3>
                                     <p>Description: {description}</p>
                                     <p>Price: {price}</p>
@@ -82,7 +82,7 @@ const Profile = ({ user, posts, setPosts, token }) => {
                                         }}>Delete Post</button>
                                     </div>
                                 </div>
-                            </>
+                            
 
                         )
                     }

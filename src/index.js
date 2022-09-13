@@ -59,7 +59,7 @@ const App = () => {
 
     useEffect(() => {
         fetchPosts()
-    }, [token, ]) // adding posts leads to constant fetching
+    }, [token]) 
     
     useEffect(() => {
         getMe();   

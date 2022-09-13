@@ -51,14 +51,14 @@ a:visited {
     flex-wrap:wrap;
     font-family:'Open Sans' ;
     align-items:flex-start;
-    flex-grow:23%;
+    /* flex-grow:23%; */
     
 }
 
 .post {
     display:flex;
     flex-direction:column;
-    flex-basis: 64px;
+    flex-basis: 250px;
     flex-grow:1;
     flex-shrink:0;
     margin-bottom: 12px;

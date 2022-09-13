@@ -68,7 +68,7 @@ const Posts = ({ posts, token, setPosts, navigate }) => {
                                                     const results = await getPosts(token)
                                                     setPosts(results.data.posts);
                                                     navigate(`/posts`);
-                                                    location.reload;
+                                                    // location.reload;
                                                 }}>Delete Post</button>
                                             </>
                                         ) : (

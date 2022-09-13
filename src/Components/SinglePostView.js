@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { deletePost, createMessage, } from '../api';
 
 const SendMessage = ({ postID, token }) => {
@@ -27,12 +27,21 @@ const SendMessage = ({ postID, token }) => {
     )
 }
 
-const SinglePostView = ({ posts, token, navigate, getMe }) => {
+const SinglePostView = ({ posts, token, navigate, }) => {
     const [activateMessage, setActivateMessage] = useState(false);
     const { postID } = useParams();
 
     if (posts.length) {
         const [currentPost] = posts.filter(post => post._id === postID);
+        if (!currentPost) {
+            return (
+                <div>
+                    <h1>Post Not Found</h1>
+                    <h2>This post no longer exists!</h2>
+                    <button><Link to='/profile'>Back to Profile</Link></button>
+                </div>
+            )
+        }
         const { title, description, location, price, willDeliver } = currentPost;
 
         return (
@@ -56,6 +65,7 @@ const SinglePostView = ({ posts, token, navigate, getMe }) => {
             <h1>Waiting for posts...</h1>
         )
     }
+    
 }
 
 export default SinglePostView;
