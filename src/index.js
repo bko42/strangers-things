@@ -59,7 +59,7 @@ const App = () => {
 
     useEffect(() => {
         fetchPosts()
-    }, [token])
+    }, [token, ]) // adding posts leads to constant fetching
     
     useEffect(() => {
         getMe();   
@@ -91,13 +91,17 @@ const App = () => {
                 <Route exact path='/posts/edit-post/:postID'
                     element={<EditPost 
                     token={token}
-                    posts={posts}/>}
+                    posts={posts}
+                    setPosts={setPosts}
+                    navigate={navigate}
+                    />}
                 />
                 <Route path='/profile' 
                 element={<Profile
                 user={user}
                 posts={posts}
                 setPosts={setPosts}
+                navigate={navigate}
                 token={token}
                 />} />
                 <Route

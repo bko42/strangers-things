@@ -59,13 +59,13 @@ const EditPost = ({ posts, token, setPosts, navigate }) => {
                 checked = {newWillDeliver}
                 onChange={(event) => setNewWillDeliver(!newWillDeliver)}
                 />    
-                {/* Will not work properly, setPosts not a function */}
+                
                 <button onClick={async(event) => { 
                         event.preventDefault();
                         editPost()
                         const results = await getPosts(token)
                         setPosts(results.data.posts);
-                        navigate (`/posts/${_id}`)
+                        navigate (`/posts/${postID}`)
                         }}>Edit Post</button> 
             
         </div>

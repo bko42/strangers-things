@@ -9,10 +9,13 @@ const Posts = ({ posts, token, setPosts, navigate }) => {
     // const [posts, setPosts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
+
     const postMatches = (post, string) => {
+
+
         const { title, description } = post;
 
-        if ((title.includes(string)) || description.includes(string)) {
+        if ((title.toLowerCase().includes(string.toLowerCase())) || description.toLowerCase().includes(string.toLowerCase())) {
             return post;
         }
 
@@ -37,45 +40,51 @@ const Posts = ({ posts, token, setPosts, navigate }) => {
                     />
                 </form>
             </div>
+            <div className='posts'>
+                {
 
-            {
-                postsToDisplay.map((post) => {
-                    const { description, location, price, willDeliver, title, _id, isAuthor } = post;
-                    return (
-                        <div className='posts' key={_id}>
-                            <h3>{title}</h3>
-                            <p>Description: {description}</p>
-                            <p>Price: {price}</p>
-                            <p>Location: {location}</p>
-                            {willDeliver ? <p>Will Deliver</p> : <p>Pickup Only</p>}
-                            <div>
-                                {
+                    postsToDisplay.map((post, idx) => {
+                        const { description, location, price, willDeliver, title, _id, isAuthor } = post;
+                        return (
 
-                                    <button><Link to={`/posts/${_id}`}>View</Link></button>
-                                }
-                                {
-                                    isAuthor ? (
-                                        <>
-                                            <button><Link to={`/posts/edit-post/${_id}`}>Edit</Link></button>
-                                            <button onClick={async(event) => {
-                                                event.preventDefault();
-                                                deletePost(token, { _id })
-                                                const results = await getPosts(token)
-                                                setPosts(results.data.posts);
-                                                navigate (`/posts`);
-                                                location.reload;
-                                            }}>Delete Post</button>
-                                        </>
-                                    ) : (
-                                        null
-                                    )
+                            <div className='post' key={idx}>
+                                <h3 className='postTitle'>{title}</h3>
+                                <p>Description: {description}</p>
+                                <p>Price: {price}</p>
+                                <p>Location: {location}</p>
+                                {willDeliver ? <p>Will Deliver</p> : <p>Pickup Only</p>}
+                                <div>
+                                    {
 
-                                }
+                                        <button><Link to={`/posts/${_id}`}>View</Link></button>
+                                    }
+                                    {
+                                        isAuthor ? (
+                                            <>
+                                                <button><Link to={`/posts/edit-post/${_id}`}>Edit</Link></button>
+                                                <button onClick={async (event) => {
+                                                    event.preventDefault();
+                                                    deletePost(token, { _id })
+                                                    const results = await getPosts(token)
+                                                    setPosts(results.data.posts);
+                                                    navigate(`/posts`);
+                                                    location.reload;
+                                                }}>Delete Post</button>
+                                            </>
+                                        ) : (
+                                            null
+                                        )
+
+                                    }
+                                </div>
                             </div>
-                        </div>
-                    )
-                })
-            }
+
+                        )
+
+                    })
+
+                }
+            </div>
         </div>
     )
 }
