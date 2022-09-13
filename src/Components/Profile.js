@@ -5,7 +5,7 @@ import { getPosts, deletePost } from '../api'
 const Profile = ({ user, posts, setPosts, token }) => {
     const messages = user.messages;
     const userID = user._id;
-    console.log(messages, userID);
+    // console.log(messages, userID);
 
     // const results = await getPosts(token)
     // setPosts(results.data.posts);
@@ -26,7 +26,7 @@ const Profile = ({ user, posts, setPosts, token }) => {
                             return (
                                 <div className='post' key={message._id}>
                                     <p>From User: {username}</p>
-                                    <p>About {title}</p>
+                                    <p>About: {title}</p>
                                     <p>Message: {message.content}</p>
                                     <button><Link to={`/posts/${ _id }`}>View Post</Link></button>
                                 </div>
@@ -47,7 +47,7 @@ const Profile = ({ user, posts, setPosts, token }) => {
                         if (userID === fromUserID) {
                             return (
                                 <div className='post' key={idx}>
-                                    <p>About {title}</p>
+                                    <p>About: {title}</p>
                                     <p>{message.content}</p>
                                     <button><Link to={`/posts/${ _id }`}>View Post</Link></button>
                                 </div>

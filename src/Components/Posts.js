@@ -28,8 +28,8 @@ const Posts = ({ posts, token, setPosts, navigate }) => {
 
     return (
         <div>
-            <div className='Search'>
-                <form onSubmit={(event) => {
+            <div>
+                <form className='search' onSubmit={(event) => {
                     event.preventDefault();
 
                 }}>

@@ -43,7 +43,20 @@ const SinglePostView = ({ posts, token, navigate, }) => {
             )
         }
         const { title, description, location, price, willDeliver, isAuthor, } = currentPost;
-
+        if (!token) {
+            return (
+                <div className='singlePost'>
+                    <div>
+                        <h3 id='postTitle'>{title}</h3>
+                        <p>Description: {description}</p>
+                        <p>Price: {price}</p>
+                        <p>Location: {location}</p>
+                        <p>Will Deliver: {willDeliver}</p>
+                        <h3>Please Register or Login to Message this User</h3>
+                    </div>
+                </div>
+            )
+        }
         return (
             <div className='singlePost'>
                 <div>
@@ -51,7 +64,7 @@ const SinglePostView = ({ posts, token, navigate, }) => {
                     <p>Description: {description}</p>
                     <p>Price: {price}</p>
                     <p>Location: {location}</p>
-                    <p>Will Deliver: {willDeliver}</p>
+                    <p>Will Deliver: {willDeliver}</p>                                    
                 </div>
                 <button onClick={() => setActivateMessage(!activateMessage)}>Message this user</button>
                 {

@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Monoton&family=Press+Start+2P&family=Rubik+Mono+One&display=swap');
+
+#siteTitle {
+    
+    text-align: center;
+    font-family: 'Concert One';
+}
+
+#siteBody {
+    text-align: center;
+    font-family: 'Concert One';
+    
+    
+}
+
+.steps {
+    font-size: large;
+    text-align: left;
+}
+
 .topBar {
     background-color: grey;
     color: white;
@@ -69,4 +89,10 @@ a:visited {
 
 .postTitle {
     width: 30rem;
+}
+
+.search {
+    display:flex;
+    flex-grow:1;
+    padding: .5rem;
 }
