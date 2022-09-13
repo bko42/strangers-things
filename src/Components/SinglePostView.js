@@ -42,7 +42,7 @@ const SinglePostView = ({ posts, token, navigate, }) => {
                 </div>
             )
         }
-        const { title, description, location, price, willDeliver } = currentPost;
+        const { title, description, location, price, willDeliver, isAuthor, } = currentPost;
 
         return (
             <div className='singlePost'>
@@ -57,7 +57,21 @@ const SinglePostView = ({ posts, token, navigate, }) => {
                 {
                     activateMessage && <SendMessage postID={postID} token={token} />
                 }
-
+                {
+                    isAuthor? (
+                <>
+                <button onClick={async (event) => {
+                event.preventDefault();                                    
+                deletePost(token, { _id })                                                    
+                const results = await getPosts(token)                                                    
+                setPosts(results.data.posts);                                                    
+                navigate(`/profile`);          
+                }}>Delete Post</button>
+                </>
+                    ) : (
+                        null
+                    )
+                }
             </div>
         )
     } else {
