@@ -26,7 +26,7 @@ const Profile = ({ user, posts, setPosts, token }) => {
                             return (
                                 <div className='post' key={message._id}>
                                     <p>From User: {username}</p>
-                                    <p>About: {title}</p>
+                                    <p className='about'>About: {title}</p>
                                     <p>Message: {message.content}</p>
                                     <button><Link to={`/posts/${ _id }`}>View Post</Link></button>
                                 </div>
@@ -47,7 +47,7 @@ const Profile = ({ user, posts, setPosts, token }) => {
                         if (userID === fromUserID) {
                             return (
                                 <div className='post' key={idx}>
-                                    <p>About: {title}</p>
+                                    <p className='about'>About: {title}</p>
                                     <p>{message.content}</p>
                                     <button><Link to={`/posts/${ _id }`}>View Post</Link></button>
                                 </div>
@@ -65,7 +65,7 @@ const Profile = ({ user, posts, setPosts, token }) => {
                         return (
                             
                                 <div className='post' key={index}>
-                                    <h3>{title}</h3>
+                                    <h3 className='postTitle'>{title}</h3>
                                     <p>Description: {description}</p>
                                     <p>Price: {price}</p>
                                     <p>Location: {location}</p>

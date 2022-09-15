@@ -102,7 +102,7 @@ export const createPost = async (token, {title, description, price, location, wi
  }
 }
 
-// Not Working
+
 export const deletePost = async (token, {_id}) => {
     try {
         const response = await fetch (`${baseURL}/posts/${_id}`, {

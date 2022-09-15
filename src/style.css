@@ -71,6 +71,8 @@ a:visited {
     flex-wrap:wrap;
     font-family:'Open Sans' ;
     align-items:flex-start;
+    
+
     /* flex-grow:23%; */
     
 }
@@ -78,17 +80,26 @@ a:visited {
 .post {
     display:flex;
     flex-direction:column;
-    flex-basis: 250px;
-    flex-grow:1;
+    /* flex-basis: 250px; */
+    /* flex-grow:1; */
     flex-shrink:0;
     margin-bottom: 12px;
     margin-right: 12px;
-    box-shadow: 0 2px 5px -2px black;
-    padding: 1rem;
+    border: 5px;
+    box-shadow: 5px 10px 10px 3px #888888;
+    padding: 1.5rem;
+    width: 20rem;
+    background-color: lightgray;
+    
 }
 
 .postTitle {
     width: 30rem;
+}
+
+.about {
+    font-weight: bold;
+    font-size: large;
 }
 
 .search {
